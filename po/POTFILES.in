@@ -1,0 +1,6 @@
+src/AISMsgSettingsDialog.h
+src/AISMsgSettingsDialog.cpp
+src/AISMsgUIDialog.h
+src/AISMsgUIDialog.cpp
+src/AISMSGUIDialogBase.h
+src/AISMSGUIDialogBase.cpp
