@@ -13,3 +13,6 @@ From the cmake-gui, set the build folder, run Configure and then Generate.
 Load the aismsg_pi.sln in to VisualStudio 2013 and build the debug version.
 
 Run the copy-plugin.bat to copy the plugin files to a debug version of OpenCPN.
+
+** NOTE: This plug-in is in development.  It compiles but is not functional.
+	     Only Windows build currently supported.
