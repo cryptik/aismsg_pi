@@ -1,0 +1,58 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the aismsg_pi package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: aismsg_pi 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-07-06 15:34-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/AISMSGUIDialogBase.h:54
+msgid "AIS Message Control"
+msgstr ""
+
+#: src/AISMSGUIDialogBase.h:83
+msgid "AIS Message Settings"
+msgstr ""
+
+#: src/AISMSGUIDialogBase.cpp:24
+msgid "Enter Message Text:"
+msgstr ""
+
+#: src/AISMSGUIDialogBase.cpp:31
+msgid "Binary Broadcast (BBM)"
+msgstr ""
+
+#: src/AISMSGUIDialogBase.cpp:34
+msgid "Addressed Binary (ABM)"
+msgstr ""
+
+#: src/AISMSGUIDialogBase.cpp:40
+msgid "Send"
+msgstr ""
+
+#: src/AISMSGUIDialogBase.cpp:43
+msgid "Cancel"
+msgstr ""
+
+#: src/AISMSGUIDialogBase.cpp:80
+msgid "Enable BBM"
+msgstr ""
+
+#: src/AISMSGUIDialogBase.cpp:83
+msgid "Enable ABM"
+msgstr ""
+
+#: src/AISMSGUIDialogBase.cpp:86
+msgid "Ownship MMSI:"
+msgstr ""
