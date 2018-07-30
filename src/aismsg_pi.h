@@ -21,6 +21,7 @@
 #define __AISMSGPLUGIN_PI_H__
 
 #include "wx/wxprec.h"
+
 #ifndef WX_PRECOMP
 #include <wx/glcanvas.h>
 #include "wx/wx.h"
@@ -34,8 +35,8 @@
 #include "ocpn_plugin.h"
 
 // forward declarations
-class AISMsgSettingsDialog;
 class AISMsgUIDialog;
+class AISMsgDebugDialog;
 
 //----------------------------------------------------------------
 //    The PlugIn Class Definition
@@ -43,47 +44,66 @@ class AISMsgUIDialog;
 
 #define AISMSG_TOOL_POSITION -1  // Request default positioning of toolbar tool
 
-class aismsg_pi : public opencpn_plugin_115 {
+class aismsg_pi : public opencpn_plugin_115
+{
 	public:
-		aismsg_pi(void *ppimgr);
-		~aismsg_pi(void);
+		aismsg_pi ( void *ppimgr );
+		~aismsg_pi ( void );
 
 		// required plugin methods
-		int Init(void);
-		bool DeInit(void);
+		int Init ( void );
+		bool DeInit ( void );
 
-		int GetAPIVersionMajor();
-		int GetAPIVersionMinor();
-		int GetPlugInVersionMajor();
-		int GetPlugInVersionMinor();
+		int GetAPIVersionMajor ( );
+		int GetAPIVersionMinor ( );
+		int GetPlugInVersionMajor ( );
+		int GetPlugInVersionMinor ( );
 
-		wxBitmap *GetPlugInBitmap();
-		wxString GetCommonName();
-		wxString GetShortDescription();
-		wxString GetLongDescription();
+		wxBitmap *GetPlugInBitmap ( );
+		wxString GetCommonName ( );
+		wxString GetShortDescription ( );
+		wxString GetLongDescription ( );
 
 		// required override plugin methods
-		int GetToolbarToolCount(void);
-		void OnToolbarToolCallback(int id);
+		int GetToolbarToolCount ( void );
+		void OnToolbarToolCallback ( int id );
 
 		// optional plugin overrides
-		void SetColorScheme(PI_ColorScheme cs);
-		void SetNMEASentence(wxString &sentence);
-		void SetAISSentence(wxString &sentence);
-		void SetPluginMessage(wxString &message_id, wxString &message_body);
-		void SetPositionFixEx(PlugIn_Position_Fix_Ex &pfix);
+		void SetColorScheme ( PI_ColorScheme cs );
+		void SetNMEASentence ( wxString &sentence );
+		void SetAISSentence ( wxString &sentence );
+		void SetPluginMessage ( wxString &message_id, wxString &message_body );
+		void SetPositionFixEx ( PlugIn_Position_Fix_Ex &pfix );
 
-		// other plublic methods
-		void SetDialogX(int x) { m_iDlgX = x; };
-		void SetDialogY(int y) { m_iDlgY = y; }
+		void ShowPreferencesDialog( wxWindow* parent );
+		void SetDefaults( void );
+
+		// setters and getters
+		void SetDialogXY ( wxPoint point ) { m_oDlgPt = point; };
+		wxPoint GetDialogXY ( ) { return m_oDlgPt; };
+
+		void SetDebugDlgXY ( wxPoint point ) { m_oDbgDlgPt = point; };
+		wxPoint GetDebugDlgXY ( ) { return m_oDbgDlgPt; };
+
+		// other public methods
+		void ShowDebugWindow ( );
 
 	private:
-		wxWindow				*m_parent_window;
-		AISMsgUIDialog			*m_pAISMsgUIDlg;
+		bool LoadConfig( void );
+		bool SaveConfig( void );
 
-		int						m_iDlgX, m_iDlgY;
+	private:
+		wxFileConfig			*m_pconfig;
+
+		wxWindow				*m_parent_window;
 		int						m_iDispWidth, m_iDispHeight;
 		int						m_leftclick_tool_id;
+
+		AISMsgUIDialog			*m_pAISMsgUIDlg;
+		wxPoint					m_oDlgPt;
+
+		AISMsgDebugDialog		*m_pAISMsgDbgDlg;
+		wxPoint					m_oDbgDlgPt;
 };
 
 #endif // __AISMSGPLUGIN_PI_H__

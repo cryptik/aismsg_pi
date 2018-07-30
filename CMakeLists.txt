@@ -25,16 +25,12 @@ SET(CMAKE_VERBOSE_MAKEFILE ON)
 SET(PACKAGE_NAME aismsg_pi)
 SET(VERBOSE_NAME AISMessageControl)
 SET(TITLE_NAME AISMessageControl)
-SET(CPACK_PACKAGE_CONTACT "Ken E.")
+SET(CPACK_PACKAGE_CONTACT "Ken Erney")
 
 SET(BUNDLE_DATA TRUE)
 
 INCLUDE( "VERSION.cmake" )
 SET(PLUGIN_VERSION "${PLUGIN_VERSION_MAJOR}.${PLUGIN_VERSION_MINOR}.${PLUGIN_VERSION_PATCH}" )
-
-SET(VERSION_MAJOR ${PLUGIN_VERSION_MAJOR})
-SET(VERSION_MINOR ${PLUGIN_VERSION_MINOR})
-SET(VERSION_DATE ${PLUGIN_VERSION_DATE})
 
 #SET(CMAKE_BUILD_TYPE Debug)
 
@@ -43,12 +39,14 @@ INCLUDE("cmake/PluginConfigure.cmake")
 SET(SRC_AISMSG
     src/aismsg_pi.cpp
     src/aismsg_pi.h
-    src/AISMsgSettingsDialog.cpp
-    src/AISMsgSettingsDialog.h
+    src/AISMsgPrefsDialog.cpp
+    src/AISMsgPrefsDialog.h
+	src/AISMsgDebugDialog.cpp
+	src/AISMsgDebugDialog.h
     src/AISMsgUIDialog.cpp
     src/AISMsgUIDialog.h
-    src/AISMSGUIDialogBase.cpp
-    src/AISMSGUIDialogBase.h
+    src/AISMSGUIBase.cpp
+    src/AISMSGUIBase.h
     src/icons.cpp
     src/icons.h
 	src/ocpn_plugin.h

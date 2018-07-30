@@ -18,25 +18,55 @@
  */
 
 #include "AISMsgUIDialog.h"
+#include "aismsg_pi.h"
 
-AISMsgUIDialog::AISMsgUIDialog( wxWindow* parent ) : AISMsgUIDialogBase( parent ) {}
-
-void AISMsgUIDialog::OnSetMsgType( wxCommandEvent& event ) {
-	// TODO: Implement OnSetMsgType
+AISMsgUIDialog::AISMsgUIDialog ( aismsg_pi *pi, wxWindow* parent ) : AISMsgUIDialogBase ( parent )
+{
+	// save the pointer to the plugin controller
+	m_paismsg_pi = pi;
 }
 
-void AISMsgUIDialog::OnSndMsg( wxCommandEvent& event ) {
-	// TODO: Implement OnSndMsg
+void AISMsgUIDialog::OnDialogClose( wxCloseEvent& event )
+{
+	event.Skip( );
+	return;
 }
 
-void AISMsgUIDialog::OnCancel( wxCommandEvent& event ) {
-	// TODO: Implement OnCancel
+void AISMsgUIDialog::OnSetMsgType ( wxCommandEvent& event )
+{
+	wxString msg = wxString ( _( "SET MSG TYPE ????\n" ) );
+
+	if ( event.GetEventObject() == m_rbMsgTypeABM )
+	{
+		msg = wxString ( _( "SET MSG TYPE ABM\n" ) );
+	}
+	else if ( event.GetEventObject() == m_rbMsgTypeBBM )
+	{
+		msg = wxString ( _( "SET MSG TYPE BBM\n" ) );
+	}
+
+	AppendToMsgThread ( msg );
+	return;
 }
 
-void AISMsgUIDialog::OnUpdateDebugMsg( wxString &msg ) {
-	if( !m_tcMsgThread->GetValue() ) 
-		m_tcMsgThread->AppendText(msg);
+void AISMsgUIDialog::OnSndMsg ( wxCommandEvent& event )
+{
+	wxString msg = wxString ( _("SEND\n") );
+	AppendToMsgThread ( msg );
+	return;
 }
 
-void AISMsgUIDialog::OnPluginMsg( wxString &id, wxString &msg ) {
+void AISMsgUIDialog::OnDebug ( wxCommandEvent& event )
+{
+	if ( NULL != m_paismsg_pi )
+	{
+		m_paismsg_pi->ShowDebugWindow ( );
+	}
+	return;
+}
+
+void AISMsgUIDialog::AppendToMsgThread ( wxString &msg )
+{
+	m_tcMsgThread->AppendText ( msg );
+	return;
 }
